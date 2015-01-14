@@ -15,9 +15,10 @@
 # This version is modified to work with the stable builds of zxing and Python 3 by David Manouchehri
 # https://github.com/Manouchehri
 
-__version__ = '0.2-dave'
+__version__ = '0.3-dave'
 __zxingversion__ = '3.1.0'
 import subprocess, re, os
+
 
 class BarCodeReader():
     location = ""
@@ -34,7 +35,7 @@ class BarCodeReader():
 
         self.location = loc
 
-    def decode(self, files, try_harder = False, qr_only = False):
+    def decode(self, files, try_harder=False, qr_only=False):
         cmd = [self.command]
         cmd += self.args[:]  # copy arg values
         if try_harder:
@@ -47,10 +48,10 @@ class BarCodeReader():
         cmd = [ c if c != "LIBS" else ":".join(libraries) for c in cmd ]
 
         # send one file, or multiple files in a list
-        SINGLE_FILE = False
+        single_file = False
         if type(files) != type(list()):
             cmd.append(files)
-            SINGLE_FILE = True
+            single_file = True
         else:
             cmd += files
 
@@ -65,7 +66,7 @@ class BarCodeReader():
 
             codes.append(BarCode(result))
 
-        if SINGLE_FILE:
+        if single_file:
             return codes[0]
         else:
             return codes
