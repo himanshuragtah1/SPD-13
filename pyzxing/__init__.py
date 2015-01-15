@@ -15,6 +15,8 @@
 # This version is modified to work with the stable builds of zxing and Python 3 by David Manouchehri
 # https://github.com/Manouchehri
 
+# TODO: Make a proper git repository to handle stable versions
+
 __version__ = '0.3-dave'
 __zxingversion__ = '3.1.0'
 import subprocess, re, os

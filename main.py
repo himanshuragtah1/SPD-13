@@ -1,6 +1,6 @@
 __author__ = 'David Manouchehri (david@davidmanouchehri.com)'
 
-# Everything used is cross-platform with ARM and x86, and it will stay this way.
+# Everything used should be cross-platform (Linux and Windows if you're willing) and cross-architecture (ARM and x86).
 
 # Comment the following line out and everything else with cv2 if you aren't going to use it
 import cv2  # I'm using OpenCV 3 with Python 3 support compiled in, you will need to recompile it yourself most likely
@@ -26,7 +26,10 @@ Be sure to use the same style of threading as shown lower down to avoid blocking
 '''
 
 # TODO: SD card photo downloading through PTP
-# OR
+'''
+More or less the same thing as fetching the live view.
+'''
+
 # TODO: PTP/SD cardless photos with CHDK
 '''
 Using Zac's module, I think photos are going to have to be stored on a small SD card first, then transferred.
@@ -87,3 +90,25 @@ if __name__ == '__main__':  # I can't see why someone would run this as a module
     cv2.imshow('window title', img)  # Make it popup in GTK/Qt, make sure not to attempt this on a headless system
     # cv2.waitKey(0)  # Wait for user input before closing, otherwise it flashes open/close before you can see it
     # cv2.destroyAllWindows()
+
+    # TODO: Objection detection (sounds easy right?)
+    '''
+    Check section 3 (page 11) for details
+    http://www.unmannedsystems.ca/media.php?mid=4345
+
+    In this, it's section 7.2 (pdf page 26, "real" page 24)
+    http://www.auvsi-seafarer.org/documents/2015Documents/2015_AUVSI_SUAS_Rules_Rev_1.0_FINAL_14-1023-1.pdf
+    '''
+
+# TODO: Communication via State-Synchronization Protocol (Keith Winstein and Hari Balakrishnan)
+'''
+https://mosh.mit.edu/mosh-paper-draft.pdf
+A large issue I personally see with most existing UAV communication systems is that they run under the assumption that
+they take an "all or nothing" approach with relaying information to a ground station. With SSP, a smooth transition
+between 802.11 2.4GHz, 3G and satellite could be possible. There's still some unanswered questions I have with this
+part of the project, so this isn't a priority. Probably the script's output will be watched via SSH until this gets
+done.
+'''
+
+# Suggestion: If the live view of the payload camera ends up working decently, maybe pipe the FPV camera through the
+# on-board system.
